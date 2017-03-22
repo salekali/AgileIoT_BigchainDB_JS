@@ -12,7 +12,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "dependencies": {
     "bs58": "^4.0.0",
     "buffer": "^5.0.2",
@@ -26,5 +25,9 @@
   "keywords": [
     "bigchaindb",
     "cryptoconditions"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/salekali/AgileIoT_BigchainDB_JS/issues"
+  },
+  "homepage": "https://github.com/salekali/AgileIoT_BigchainDB_JS#readme"
 }
