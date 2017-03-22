@@ -2,9 +2,9 @@
 
 // Importing functions from func_utils.js
 var _func_utils = require('./func_utils');
+var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 // Generating Keypair
-
 var passcode = 'Thisisapassword'; //have to get password from user
 var agile_GW = new _func_utils.Ed25519Keypair(passcode);
 console.log(agile_GW.publicKey); // something like "DjPMHDD9JtgypDKY38mPz9f6owjAMAKhLuN1JfRAat8C"
@@ -19,7 +19,7 @@ var agile_GW_Output = new _func_utils.makeOutput(agile_GW_Condition);
 // Creating digital asset
 var reading = {
     'name': 'dummy data',
-    'other data': 'other data'
+    'other': 'other data'
 };
 
 var metadata = null;
@@ -31,3 +31,11 @@ var createTx = (0, _func_utils.makeCreateTransaction)(reading, metadata, [agile_
 // Generate signed "CREATE" transaction
 var signedCreateTx = (0, _func_utils.signTransaction)(createTx, agile_GW.privateKey);
 console.log(signedCreateTx);
+
+// Send fulfilled "CREATE" transaction to the BigchainDB HTTP API endpoint
+var xhr = new XMLHttpRequest();
+var url = "http://localhost:9984/api/v1/transactions"; //figure out how to make this dynamic
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-type", "application/json");
+var data = JSON.stringify(signedCreateTx);
+xhr.send(data);
