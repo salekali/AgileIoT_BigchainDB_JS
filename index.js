@@ -5,7 +5,7 @@ var _func_utils = require('./func_utils');
 var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 
 
-/******************
+/*****************
 * User Input Data *
 *******************/
 
@@ -28,7 +28,7 @@ console.log(url_device, "\n" +url_bdb);
 
 var agile_GW = new _func_utils.Ed25519Keypair(passcode);
 console.log("\n" + "The public key for this device is: " + agile_GW.publicKey + "\n");
-//console.log(agile_GW.privateKey);
+console.log(agile_GW.privateKey);
 
 
 /*************************
